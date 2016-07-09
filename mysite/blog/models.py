@@ -10,8 +10,8 @@ class Post(models.Model):
     DRAFT = 'draft'
     PUBLISHED = 'published'
     STATUS_CHOICES = (
-        ('DRAFT', 'Draft'),
-        ('PUBLISHED', 'Published'))
+        (DRAFT, 'Draft'),
+        (PUBLISHED, 'Published'))
     title = models.CharField(max_length=250)
     slug = models.SlugField(max_length=250,
                             unique_for_date='publish')
