@@ -105,7 +105,7 @@ STATIC_URL = '/static/'
 
 # Email settings
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = os.environ['EMAIL_USERNAME']
-EMAIL_HOST_PASSWORD = os.environ['EMAIL_PASSWORD']
+EMAIL_HOST_USER = os.environ.get('EMAIL_USERNAME', None)
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASSWORD', None)
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
