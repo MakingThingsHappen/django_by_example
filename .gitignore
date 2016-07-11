@@ -3,3 +3,4 @@
 .idea
 *migrations
 *.sqlite3
+media
