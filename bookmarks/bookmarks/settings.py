@@ -119,6 +119,7 @@ AUTHENTICATION_BACKENDS = (
     'social.backends.facebook.Facebook2OAuth2',
 )
 
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 SOCIAL_AUTH_FACEBOOK_KEY = '1014475075266764' # Facebook App ID
 SOCIAL_AUTH_FACEBOOK_SECRET = 'XXX' # Facebook App Secret
