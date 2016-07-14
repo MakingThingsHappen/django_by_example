@@ -39,7 +39,8 @@ INSTALLED_APPS = (
     'account',
     'django.contrib.admin',
     'social.apps.django_app.default',
-    'images'
+    'images',
+    'sorl.thumbnail',
 
 )
 
