@@ -4,11 +4,38 @@ from django.contrib import messages
 from django.shortcuts import get_object_or_404
 from django.http import JsonResponse
 from django.views.decorators.http import require_POST
+from django.http import HttpResponse
+from django.core.paginator import Paginator, EmptyPage, \
+    PageNotAnInteger
 
 from common.decorators import ajax_required
 
 from .models import Image
 from .forms import ImageCreateForm
+
+ITEM_PER_PAGE = 8
+
+
+@login_required
+def image_list(request):
+    images = Image.objects.all()
+    paginator = Paginator(images, ITEM_PER_PAGE)
+    page = request.GET.get('page')
+    template_name = 'images/image/list.html',
+    try:
+        images = paginator.page(page)
+    except PageNotAnInteger:
+        # If page is not an integer deliver the first page
+        images = paginator.page(1)
+    except EmptyPage:
+        if request.is_ajax():
+            return HttpResponse('')
+        images = paginator.page(paginator.num_pages)
+    if request.is_ajax():
+        template_name = 'images/image/list_ajax.html'
+    return render(request,
+                  template_name,
+                  {'section': 'images', 'images': images})
 
 
 @login_required
