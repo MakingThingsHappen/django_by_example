@@ -122,5 +122,10 @@ AUTHENTICATION_BACKENDS = (
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
-SOCIAL_AUTH_FACEBOOK_KEY = '1014475075266764' # Facebook App ID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'XXX' # Facebook App Secret
+SOCIAL_AUTH_FACEBOOK_KEY = '1014475075266764'  # Facebook App ID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'XXX'  # Facebook App Secret
+
+ABSOLUTE_URL_OVERRIDES = {
+    'auth.user': lambda u: reverse_lazy('user_detail',
+                                        args=[u.username])
+}
