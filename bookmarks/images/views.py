@@ -13,7 +13,7 @@ from common.decorators import ajax_required
 from .models import Image
 from .forms import ImageCreateForm
 
-ITEM_PER_PAGE = 8
+ITEM_PER_PAGE = 16
 
 
 @login_required

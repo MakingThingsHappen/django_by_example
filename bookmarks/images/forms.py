@@ -1,7 +1,8 @@
 from urllib import request
 from django.core.files.base import ContentFile
-from django.utils.text import slugify
 from django import forms
+
+from slugify import slugify
 from .models import Image
 
 
