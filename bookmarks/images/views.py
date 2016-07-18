@@ -1,14 +1,14 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-from django.shortcuts import get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponse
 from django.views.decorators.http import require_POST
-from django.http import HttpResponse
 from django.core.paginator import Paginator, EmptyPage, \
     PageNotAnInteger
+from django.utils.translation import gettext as _
 
 from common.decorators import ajax_required
+from actions.utils import create_action
 
 from .models import Image
 from .forms import ImageCreateForm
@@ -50,6 +50,7 @@ def image_create(request):
             # assign current user to the item
             new_item.user = request.user
             new_item.save()
+            create_action(request.user, _('bookmarked image'), new_item)
             messages.success(request, 'Image added successfully')
             # redirect to new created item detail view
             return redirect(new_item.get_absolute_url())
@@ -81,6 +82,7 @@ def image_like(request):
             image = Image.objects.get(id=image_id)
             if action == 'like':
                 image.users_like.add(request.user)
+                create_action(request.user, _('likes'), image)
             else:
                 image.users_like.remove(request.user)
             return JsonResponse({'status': 'ok'})
