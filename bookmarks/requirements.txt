@@ -4,3 +4,4 @@ sorl-thumbnail==12.3
 python-slugify==1.2.0
 Markdown==2.6.6
 Django==1.8.13
+redis==2.10.5
