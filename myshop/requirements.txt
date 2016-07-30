@@ -1,3 +1,4 @@
 Django==1.8.13
 Pillow==3.3.0
 celery==3.1.23
+django-paypal==0.3.2
