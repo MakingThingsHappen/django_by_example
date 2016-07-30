@@ -42,6 +42,7 @@ INSTALLED_APPS = (
     'paypal.standard.ipn',
     'payment',
     'coupons',
+    'rosetta',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -123,3 +124,4 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 PAYPAL_RECEIVER_EMAIL = '649038269@qq.com'
 PAYPAL_TEST = True
 STATIC_ROOT = os.path.join(BASE_DIR, 'static/')
+
